@@ -6,7 +6,7 @@ SRC_DIR = 	$(sort $(dir $(wildcard src/*/))) src/
 
 I =			$(INC_DIR:%=-I%) $(SRC_DIR:%=-I%)
 CFLAGS = 	-MP -MMD -Wall -Wextra -Werror $I
-LDFLAGS =	-Wall -Wextra -Werror $I -Llibft -lft -lreadline
+LDFLAGS =	-Llibft -lft -lreadline
 CC = 		cc
 
 SRCS =\
@@ -37,7 +37,7 @@ libft:
 	make -C libft OBJ_DIR="../obj/"
 
 $(NAME): $(OBJS) | libft
-	$(CC) $(LDFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 $(OBJ_DIR)%.o: %.c | obj_dir
 	$(CC) $(CFLAGS) -c -o $@ $<
