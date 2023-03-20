@@ -12,10 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: submodules_init
-      run: git submodule init && cd libft && git pull && cd ..
-    - name: make
+    - name: Checkout repo & submodules
+      uses: actions/checkout@v3
+      with:
+        submodules: recursive
+    - name: Run the build
       run: make
-    - name: fclean
+    - name: Cleaup
       run: make fclean
