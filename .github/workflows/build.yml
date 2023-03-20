@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: submodules_init
-      run: git submodule init && git pull --recurse-submodules
+      run: git submodule init && cd libft && git pull && cd ..
     - name: make
       run: make
     - name: fclean
