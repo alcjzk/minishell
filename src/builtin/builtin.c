@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 08:48:34 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/03/23 22:03:21 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/03/27 13:42:27 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ t_builtin_func	builtin_get(char *name)
 	{"env", builtin_env},
 	{"exit", builtin_exit},
 	{"export", builtin_export},
-	{"unset", builtin_unset}
+	{"unset", builtin_unset},
+	{"cd", builtin_cd}
 	};
 
 	idx = 0;

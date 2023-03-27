@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_pwd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:34:52 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/03/23 21:55:52 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/03/27 13:40:05 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	builtin_pwd(t_vector *argv)
 	char	cwd[4096];
 
 	(void)argv;
-	getcwd(cwd, sizeof(cwd));
+	if (!getcwd(cwd, sizeof(cwd)))
+		perror("minishell: cd");
 	printf("%s\n", cwd);
 	return (OK);
 }

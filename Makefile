@@ -28,6 +28,7 @@ builtin_pwd.c \
 builtin_env.c \
 builtin_export.c \
 builtin_unset.c \
+builtin_cd.c \
 ft_isspace.c \
 ft_strspn.c \
 ft_strcspn.c \
