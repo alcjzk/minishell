@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 08:48:34 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/03/27 13:42:27 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/03/31 11:31:26 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ t_builtin_func	builtin_get(char *name)
 	{"exit", builtin_exit},
 	{"export", builtin_export},
 	{"unset", builtin_unset},
-	{"cd", builtin_cd}
+	{"cd", builtin_cd},
+	{"echo", builtin_echo}
 	};
 
 	idx = 0;

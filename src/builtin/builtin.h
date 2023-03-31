@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:27:38 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/03/27 14:22:52 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/03/31 11:31:41 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "bool.h"
 # include "vector.h"
 
-# define BUILTINS_LENGTH 6
+# define BUILTINS_LENGTH 7
 ///	Ok.
 # define OK 0
 ///	Builtin was not found.

@@ -21,26 +21,27 @@ override CFLAGS 	+= $(EXTRA) $(OPT:%=-O%) $(INC_DIR:%=-I%) $(WARN:%=-W%)
 override LDFLAGS	+= $(LIB_DIR:%=-L%) $(LIB:%=-l%)
 
 # Sources
-SRCS =\
-builtin.c \
-builtin_exit.c \
-builtin_pwd.c \
-builtin_env.c \
-builtin_export.c \
-builtin_unset.c \
-builtin_cd.c \
-ft_isspace.c \
-ft_strspn.c \
-ft_strcspn.c \
-ft_strtonum.c \
-ft_strtok.c \
-vector.c \
-vector_remove.c \
-vector_position.c \
-shell.c \
-env.c \
-env_util.c \
-env_ops.c \
+SRCS =				\
+builtin.c 			\
+builtin_exit.c 		\
+builtin_pwd.c 		\
+builtin_env.c 		\
+builtin_export.c 	\
+builtin_unset.c 	\
+builtin_cd.c 		\
+builtin_echo.c 		\
+ft_isspace.c 		\
+ft_strspn.c 		\
+ft_strcspn.c 		\
+ft_strtonum.c 		\
+ft_strtok.c 		\
+vector.c 			\
+vector_remove.c 	\
+vector_position.c 	\
+shell.c 			\
+env.c 				\
+env_util.c 			\
+env_ops.c 			\
 main.c
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
