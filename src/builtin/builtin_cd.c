@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:38:38 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/03/28 10:03:06 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/03/31 11:02:20 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,52 @@
 #include "ft.h"
 #include "env.h"
 
-int	builtin_cd(t_vector *argv)
+static const char	*parse_path(t_vector *argv)
 {
 	const char	*path;
-	char		pwd_buff[4096];
 
 	if (argv->length <= 1 || **(char **)vector_get(argv, 1) == '\0')
-	{
 		path = env_get("HOME");
-		if (!path)
-		{
-			write(STDERR_FILENO, "minishell: cd: HOME not set\n", 28);
-			return (EXIT_FAILURE);
-		}
-	}
 	else
 		path = *(char **)vector_get(argv, 1);
-	if (chdir(path) == -1)
+	return (path);
+}
+
+static int	_builtin_cd(const char *to, const char *from)
+{
+	char	pwd_buff[4096];
+
+	if (chdir(to) == -1)
 	{
 		perror("minishell: cd");
 		return (EXIT_FAILURE);
 	}
-	if (!getcwd(pwd_buff, 4096) || !env_set("PWD", pwd_buff))
+	if (!getcwd(pwd_buff, 4096) || !env_set("OLDPWD", from)
+		|| !env_set("PWD", pwd_buff))
+	{
 		perror("minishell: cd");
+		return (EXIT_FAILURE);
+	}
 	return (OK);
+}
+
+int	builtin_cd(t_vector *argv)
+{
+	const char	*from;
+	const char	*to;
+
+	to = parse_path(argv);
+	if (!to)
+	{
+		write(STDERR_FILENO, "minishell: cd: HOME not set\n", 28);
+		return (EXIT_FAILURE);
+	}
+	from = env_get("PWD");
+	if (ft_strncmp(to, "-", 1) == 0)
+	{
+		to = env_get("OLDPWD");
+		if (to)
+			printf("%s\n", to);
+	}
+	return (_builtin_cd(to, from));
 }
