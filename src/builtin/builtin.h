@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:27:38 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/03/27 14:22:52 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/04/03 12:40:15 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define ERR_INVALID_ARGS 2
 /// System errors
 # define ERR_SYSTEM 3
+/// Buffer for PWD
+# define PWD_BUFF 4096
 
 typedef int	(*t_builtin_func)(t_vector *);
 
