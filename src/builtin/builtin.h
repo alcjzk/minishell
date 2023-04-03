@@ -16,7 +16,7 @@
 # include "bool.h"
 # include "vector.h"
 
-# define BUILTINS_LENGTH 6
+# define BUILTINS_LENGTH 7
 ///	Ok.
 # define OK 0
 ///	Builtin was not found.
