@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:38:38 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/04/03 13:31:02 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/04/03 16:07:51 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static const char	*parse_path(t_vector *argv)
 
 static int	_builtin_cd(const char *to)
 {
-	char	pwd_buff[PWD_BUFF];
 	char	old_pwd_buff[PWD_BUFF];
 
 	if (!getcwd(old_pwd_buff, PWD_BUFF))
@@ -43,7 +42,7 @@ static int	_builtin_cd(const char *to)
 		perror("minishell: cd");
 		return (EXIT_FAILURE);
 	}
-	if (!env_set("OLDPWD", old_pwd_buff) || !env_set("PWD", pwd_buff))
+	if (!env_set("OLDPWD", old_pwd_buff) || !env_set("PWD", to))
 	{
 		perror("minishell: cd");
 		return (EXIT_FAILURE);
