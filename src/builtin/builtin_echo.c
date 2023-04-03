@@ -6,37 +6,34 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 11:09:05 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/03/31 11:34:38 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/04/03 12:02:51 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdio.h>
 #include "libft.h"
 #include "builtin.h"
-#include <stdio.h>
 
 int	builtin_echo(t_vector *argv)
 {
-	const char	*string;
-	size_t		index;
-	BOOL		n_flag;
+	size_t	index;
+	BOOL	n_flag;
 
 	index = 1;
 	n_flag = FALSE;
+	if (argv->length < 2)
+		return (OK);
 	if (!ft_strncmp(*(char **)vector_get(argv, 1), "-n", 2))
 	{
 		n_flag = TRUE;
 		index++;
 	}
+	if (index < argv->length)
+		printf("%s", *(char **)vector_get(argv, index++));
 	while (index < argv->length)
-	{
-		string = *(char **)vector_get(argv, index);
-		write(STDOUT_FILENO, string, ft_strlen(string));
-		if (index < argv->length && string[0] != '\0')
-			write(STDOUT_FILENO, " ", 1);
-		index++;
-	}
+		printf(" %s", *(char **)vector_get(argv, index++));
 	if (!n_flag)
-		write(STDOUT_FILENO, "\n", 1);
+		printf("\n");
 	return (OK);
 }
