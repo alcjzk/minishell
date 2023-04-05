@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:27:19 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/03/28 14:05:18 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/04/05 15:56:48 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	builtin_exit(t_vector *argv)
 
 	err_str = NULL;
 	write(STDERR_FILENO, "exit\n", 5);
-	if (argv->length <= 1)
+	if (!argv|| argv->length <= 1)
 		exit_code = g_shell.status;
 	else
 	{
