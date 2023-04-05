@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:10:20 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/03/23 22:05:01 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:41:26 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,15 @@ int	main(int argc, char **argv, char **envp)
 		g_shell.line = readline("> ");
 		if (g_shell.line)
 			args = parse_args(g_shell.line);
+		if (g_shell.line[0])
+			add_history(g_shell.line);
 		if (args)
 			g_shell.status = builtin_exec(args);
 		vector_free(args);
 		free(g_shell.line);
 		g_shell.line = NULL;
 	}
+	rl_clear_history();
 	free_shell();
 	return (0);
 }
