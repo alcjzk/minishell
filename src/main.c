@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:10:20 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/04/05 15:56:59 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/04/05 16:01:57 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char **argv, char **envp)
 			builtin_exit(NULL);
 		if (g_shell.line[0])
 			add_history(g_shell.line);
-			args = parse_args(g_shell.line);
+		args = parse_args(g_shell.line);
 		if (args)
 			g_shell.status = builtin_exec(args);
 		vector_free(args);
