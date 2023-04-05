@@ -3,10 +3,12 @@ NAME		= minishell
 LIBFT 		= libft/libft.a
 
 # Directories
-OBJ_DIR		= obj/
-SRC_DIR		= $(sort $(dir $(wildcard src/*/))) src/
-INC_DIR		= inc/ libft/inc/ $(SRC_DIR)
-LIB_DIR		= libft
+READLINE_LIB_PATH	= $(shell brew --prefix)/lib/
+READLINE_INC_PATH	= $(shell brew --prefix)/include/
+OBJ_DIR				= obj/
+SRC_DIR				= $(sort $(dir $(wildcard src/*/))) src/
+INC_DIR				= inc/ libft/inc/ $(SRC_DIR) $(READLINE_INC_PATH)
+LIB_DIR				= libft $(READLINE_LIB_PATH)
 
 # Flags setup
 CC		= cc

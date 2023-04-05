@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   shell.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 01:07:29 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/03/20 19:38:58 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:48:12 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
+#include <readline/readline.h>
+#include <readline/history.h>
+#include <signal.h>
 #include "shell.h"
 
 t_shell	g_shell;
@@ -18,6 +22,8 @@ t_shell	g_shell;
 void	shell_init(char **envp)
 {
 	env_init(envp);
+	signal(SIGINT, handle_int);
+	signal(SIGQUIT, SIG_IGN);
 }
 
 void	free_shell(void)
@@ -25,4 +31,13 @@ void	free_shell(void)
 	if (g_shell.line)
 		free(g_shell.line);
 	env_free();
+}
+
+void	handle_int(int status)
+{
+	(void)status;
+	printf("\n");
+	rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_redisplay();
 }

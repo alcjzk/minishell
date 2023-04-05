@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 01:06:43 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/03/27 13:07:56 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:39:05 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ extern t_shell	g_shell;
 
 void	shell_init(char **envp);
 void	free_shell(void);
+void	handle_int(int status);
 
 #endif
