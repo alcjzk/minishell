@@ -47,6 +47,7 @@ env_ops.c 			\
 str.c				\
 str_push.c			\
 str_convert.c		\
+file_exp.c			\
 main.c
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
