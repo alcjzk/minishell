@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 11:18:42 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/04/07 14:49:57 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/04/10 10:56:18 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,6 @@ t_vector	*filename_expansion(char *pattern)
 	t_vector		*matches;
 	struct dirent	*dirent;
 
-	matches = balls(1, sizeof(char *));
-	if (!matches)
-		return (NULL);
 	dirp = opendir(".");
 	if (!dirp)
 	{
