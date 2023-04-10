@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 11:18:42 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/04/10 10:59:33 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/04/10 12:06:04 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,28 @@
 #include "vector.h"
 #include "bool.h"
 
-static BOOL	_pattern_match(const char *pattern,
-	const char *string, int p, int s)
+static BOOL	_pattern_match(
+	const char *pattern,
+	const char *string,
+	int idx_pat,
+	int idx_str)
 {
-	if (pattern[p] == '\0')
-		return (string[s] == '\0');
-	else if (pattern[p] == '*')
+	if (pattern[idx_pat] == '\0')
+		return (string[idx_str] == '\0');
+	else if (pattern[idx_pat] == '*')
 	{
-		while (string[s] != '\0')
+		while (string[idx_str] != '\0')
 		{
-			if (_pattern_match(pattern, string, p + 1, s))
+			if (_pattern_match(pattern, string, idx_pat + 1, idx_str))
 				return (TRUE);
-			s++;
+			idx_str++;
 		}
-		return (_pattern_match(pattern, string, p + 1, s));
+		return (_pattern_match(pattern, string, idx_pat + 1, idx_str));
 	}
-	else if (pattern[p] != string[s])
+	else if (pattern[idx_pat] != string[idx_str])
 		return (FALSE);
 	else
-		return (_pattern_match(pattern, string, p + 1, s + 1));
+		return (_pattern_match(pattern, string, idx_pat + 1, idx_str + 1));
 }
 
 BOOL	pattern_match(const char *pattern, const char *string)
@@ -67,6 +70,7 @@ t_vector	*filename_expansion(char *pattern)
 	dirp = opendir(".");
 	if (!dirp)
 	{
+		vector_free(matches);
 		perror("minishell");
 		return (NULL);
 	}
