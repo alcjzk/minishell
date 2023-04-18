@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:14:19 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/04/18 11:42:24 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/04/18 11:47:45 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ BOOL		read_operator(char *input, size_t *index, t_token *token);
 t_token		token_from_operator(t_operator operator);
 t_token		token_from_word(t_word word);
 void		tokens_free(t_vector *tokens);
-
 t_vector	*tokenize(char *line);
-void		print_tokens(t_vector *tokens);
 
 #endif

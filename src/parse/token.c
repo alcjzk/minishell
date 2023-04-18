@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:14:36 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/04/18 11:39:16 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/04/18 11:47:36 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,24 +120,4 @@ void	tokens_free(t_vector *tokens)
 		index++;
 	}
 	vector_free(tokens);
-}
-
-void	print_tokens(t_vector *tokens)
-{
-	t_token	*token;
-
-	printf("tokens : %zu\n", tokens->length);
-	for (size_t i = 0; i < tokens->length; i++)
-	{
-		token = vector_get(tokens, i);
-		// printf("index: %zu | %p\n", i, token);
-		if (token->type == token_type_operator)
-		{
-			printf("OPERATOR %i\n", token->operator);
-		}
-		else
-		{
-			printf("WORD: %s\n", token->word);
-		}
-	}
 }
