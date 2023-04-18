@@ -6,10 +6,11 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:35:38 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/04/18 11:37:54 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/04/18 11:53:30 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "parse.h"
 
 BOOL	read_word(char *input, size_t *index, t_token *token)
@@ -24,7 +25,7 @@ BOOL	read_word(char *input, size_t *index, t_token *token)
 	if (!token->word)
 		return (FALSE);
 	(*index) += length;
-	return (TRUE);	
+	return (TRUE);
 }
 
 BOOL	read_operator(char *input, size_t *index, t_token *token)

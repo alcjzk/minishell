@@ -50,6 +50,7 @@ str_convert.c		\
 file_exp.c			\
 token.c				\
 read.c				\
+word.c				\
 main.c
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
