@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:35:38 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/04/18 11:53:30 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/04/18 11:57:01 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,11 @@ BOOL	read_operator(char *input, size_t *index, t_token *token)
 		token->operator = outfile_truncate;
 	else
 		return (FALSE);
-	if (input[*index] == input[++(*index)])
+	if (input[*index] == input[*index + 1])
 	{
 		token->operator += 1;
 		(*index)++;
 	}
+	(*index)++;
 	return (TRUE);
 }
