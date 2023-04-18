@@ -48,6 +48,8 @@ str.c				\
 str_push.c			\
 str_convert.c		\
 file_exp.c			\
+token.c				\
+read.c				\
 main.c
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
