@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:10:20 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/05/15 12:29:39 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/05/15 12:54:44 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ char	*prompt(t_state *state)
 	line = readline("minishell> ");
 	termios_echoctl_reset(state->termios_state);
 	if (!read_line_quotes(line))
+	{
 		write(STDERR_FILENO, "minishell: syntax error\n", 24);
+		g_shell.status = ERR_SYNTAX;
+	}
 	return (line);
 }
 
