@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:10:20 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/05/12 19:18:10 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/05/15 12:29:39 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 #include "vector.h"
 #include "bool.h"
 #include "parse.h"
-#include "parse.h"
 #include "command.h"
 #include <termios.h>
 #include <signal.h>
@@ -35,6 +34,8 @@ char	*prompt(t_state *state)
 	termios_echoctl_disable(state->termios_state);
 	line = readline("minishell> ");
 	termios_echoctl_reset(state->termios_state);
+	if (!read_line_quotes(line))
+		write(STDERR_FILENO, "minishell: syntax error\n", 24);
 	return (line);
 }
 

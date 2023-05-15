@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokens_expand.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 12:20:03 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/05/12 18:45:19 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/05/15 12:10:23 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #include "shell.h"
 #include "parse.h"
 #include "str.h"
-#include <stdio.h>
 
 static BOOL	_tokens_expand(
 				const t_tokens *self,

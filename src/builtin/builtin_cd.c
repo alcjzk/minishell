@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:38:38 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/05/11 13:05:54 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/05/15 12:36:34 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,12 @@ int	builtin_cd(t_vector *argv, t_env *env)
 	if (ft_strncmp(to, "-", 1) == 0)
 	{
 		to = env_get(env, "OLDPWD");
+		if (to)
+			printf("%s\n", to);
+	}
+	else if (ft_strncmp(to, "~", 1) == 0)
+	{
+		to = env_get(env, "HOME");
 		if (to)
 			printf("%s\n", to);
 	}

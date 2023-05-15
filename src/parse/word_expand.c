@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   word_expand.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 21:32:51 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/05/12 18:43:15 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/05/15 12:06:43 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 #include "parse.h"
 
 #define AL_NUM "_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-#define D_QUOTE 0b01
-#define S_QUOTE 0b10
 
 static BOOL	word_expand_var(
 				const t_word self,
