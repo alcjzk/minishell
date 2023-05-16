@@ -6,7 +6,7 @@
 /*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:14:19 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/05/15 12:23:43 by dpalmer          ###   ########.fr       */
+/*   Updated: 2023/05/16 12:06:53 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ size_t		wordspan(const char *input);
 
 BOOL		read_word(const char *input, size_t *index, t_token *token);
 BOOL		read_operator(const char *input, size_t *index, t_token *token);
-BOOL		read_line_quotes(char *line);
 
 BOOL		tokens_expand(t_tokens **self, const t_env *env);
 t_tokens	*token_filenames(const char *pattern);
