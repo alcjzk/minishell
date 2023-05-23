@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_exit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:27:19 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/05/16 08:19:40 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/05/23 10:44:38 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ int	builtin_exit(t_vector *argv, t_env *env)
 			write(STDERR_FILENO, ": numeric argument required\n", 28);
 		}
 	}
-	return (exit_code | EXIT_FATAL);
+	exit (exit_code | EXIT_FATAL);
+	return (0);
 }
