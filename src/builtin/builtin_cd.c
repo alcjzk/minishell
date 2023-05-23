@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpalmer <dpalmer@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:38:38 by dpalmer           #+#    #+#             */
-/*   Updated: 2023/05/11 13:05:54 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/05/23 10:58:55 by dpalmer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 #include "ft.h"
 #include "env.h"
 
-static int	_error(void)
+static void	_error(void)
 {
 	perror ("minishell: cd");
-	return (EXIT_FAILURE);
+	g_shell.status = EXIT_FAILURE;
 }
 
 static const char	*parse_path(t_vector *argv, const t_env *env)
@@ -39,13 +39,13 @@ static int	_builtin_cd(const char *to, t_env *env)
 	char	buffer[PATH_BUFFER_SIZE];
 
 	if (!getcwd(buffer, PATH_BUFFER_SIZE))
-		return (_error());
-	if (chdir(to) == -1)
-		return (_error());
-	if (!env_set(env, "OLDPWD", buffer))
-		return (_error());
-	if (!env_set(env, "PWD", getcwd(buffer, PATH_BUFFER_SIZE)))
-		return (_error());
+		_error();
+	else if (chdir(to) == -1)
+		_error();
+	else if (!env_set(env, "OLDPWD", buffer))
+		_error();
+	else if (!env_set(env, "PWD", getcwd(buffer, PATH_BUFFER_SIZE)))
+		_error();
 	return (OK);
 }
 
